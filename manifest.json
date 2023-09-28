@@ -7,6 +7,17 @@
     "scripting",
     "activeTab"
   ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://leetcode.cn/*"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "world": "MAIN"
+    }
+  ],
   "action": {
     "default_icon": "icon.png",
     "default_title": "Clean tab",
