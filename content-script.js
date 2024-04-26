@@ -25,13 +25,21 @@ const checkTag = () => {
     if (contains[0]) {
         ele1 = document.createElement('div')
         ele1.textContent = '脑筋急转弯'
+        ele1.style.cursor = 'pointer'
         ele1.style.color = 'rgb(255,45, 85,.7)'
+        ele1.onclick = function () {
+            markResolvable(ele1)
+        }
     }
 
     if (contains[1]) {
         ele2 = document.createElement('div')
         ele2.textContent = '数学'
         ele2.style.color = 'rgb(255,45, 85,.7)'
+        ele2.style.cursor = 'pointer'
+        ele2.onclick = function () {
+            markResolvable(ele2)
+        }
     }
 
     var parents = document.getElementsByClassName('mt-3 flex items-center space-x-4')
@@ -44,4 +52,12 @@ const checkTag = () => {
     }
 }
 
-timer = setTimeout(checkTag, 2000)
+function markResolvable(ele) {
+    var url = document.URL;
+    chrome.storage.local.set({
+        [url]: true
+    })
+    ele.style.color = 'lightGreen'
+}
+
+timer = setTimeout(checkTag, 1000)
